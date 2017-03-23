@@ -1,0 +1,50 @@
+body {
+    font-family: sans-serif;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.polls {
+    background: whitesmoke;
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    -moz-padding-start: 0;
+    padding: 20px;
+    border-radius: 6px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.poll {
+    padding: 10px;
+    background: white;
+    border: 1px solid #c7c7c7;
+    border-radius: 6px;
+    margin-bottom: 1px;
+}
+
+
+.poll-options {
+    list-style-type: none;
+    -webkit-padding-start: 0;
+    -moz-padding-start: 0;
+    padding: 20px 0;
+    font-size: 18px;
+}
+
+.option {
+    padding: 10px;
+    border: 1px solid blue;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

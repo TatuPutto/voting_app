@@ -1,0 +1,11 @@
+doctype
+html
+head
+    link(rel="stylesheet", href="styles.css")
+    title="Your polls"
+body
+    div.container
+        ul.polls
+            each obj in polls
+                li.poll
+                    a(href="localhost:8080/poll/" + obj._id) #{obj.poll.name}
