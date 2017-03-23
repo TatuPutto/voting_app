@@ -1,13 +1,15 @@
 doctype
 html
 head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='http://localhost:8080/styles.css')
     title=name
 body
+    include ./header.pug
+
     div.container
         div.answer
-            h1=id
-            h2=name
+            h2.text-primary.text-center=name
             form(action='/poll/' + id + '/vote', method='post', enctype='multipart/form-data')
                 ul.poll-options
                     each option in options
@@ -17,16 +19,16 @@ body
 
                             input(type='radio', name='vote', value=optionId)
                             label=optionValue
-                input(type='submit', value='Vote')
 
 
+                input(type='submit', value='Vote').btn.btn-success
+                input(type='button', value='results').btn.btn-info.results
 
-        div.answers
-            p=('Total votes: ' + totalVotes)
-            p=('Yes: ' + votesFor1)
-            p=('Maybe: ' + votesFor3)
 
-            //each vote in votes
-                //- voteValue = options[vote_id - 1].value
-                //- amountOfVotesForValue = vote
-                //p=(optionValue + ': ' + totalVotes)
+        //div.answers
+            //p=('Total votes: ' + totalVotes)
+
+            //each option in options
+            //    - votes = option.votes
+                //- optionValue = option.value
+            //    p=(optionValue + ': ' + votes)

@@ -53,6 +53,26 @@ function getPollById(id) {
 }
 
 
+// get votes for specific poll
+function getPollVotes(id) {
+    return new Promise((resolve, reject) => {
+        getConnection((err, db, collection) => {
+            if(err) return reject(err);
+
+            collection.find({_id: new ObjectId(id)})
+                .toArray((err, results) => {
+                    if(err) reject(err);
+                    if(results.length > 0) {
+                        resolve(results[0]);
+                    } else {
+                        reject('Couldn\'t find poll with this id.');
+                    }
+                    db.close();
+                });
+        });
+    });
+}
+
 
 // insert new poll into db
 function insertPoll(name, options, author) {
@@ -80,9 +100,6 @@ function addOption() {
 
 }
 
-//$inc: {totalVotes: 1, },
-//$push: {votes: {option_id: vote}}
-
 // add vote to poll
 function insertVote(pollId, optionId) {
     getConnection((err, db, collection) => {
@@ -92,15 +109,8 @@ function insertVote(pollId, optionId) {
             _id: new ObjectId(pollId),
             'options.option_id': optionId
         }, {
-            $inc: {'options.$.votes': 1}
+            $inc: {'options.$.votes': 1, totalVotes: 1}
         });
-
-        /*collection.update({
-            _id: new ObjectId(pollId)
-        }, {
-            $inc: {totalVotes: 1},
-            $push: {votes: {option_id: vote}}
-        });*/
     });
 }
 

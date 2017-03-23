@@ -49,7 +49,7 @@ app.post('/createpoll', multer().array(), (req, res) => {
 app.get('/polls', (req, res) => {
     getPolls('TatuPutto')
         .then((polls) => {
-            res.render('polls', {polls, asd: "123"});
+            res.render('polls', {polls});
         })
         .catch((err) => res.end(err));
 });
@@ -63,7 +63,8 @@ app.get('/poll/:id', (req, res) => {
                 id: poll._id,
                 name: poll.name,
                 author: poll.author,
-                options: poll.options
+                options: poll.options,
+                totalVotes: poll.totalVotes
             });
         })
         .catch((err) => res.end(err));
@@ -75,7 +76,9 @@ app.post('/poll/:id/vote', multer().array(), (req, res) => {
     const pollId = req.params.id;
     const vote = req.body.vote;
     insertVote(pollId, vote);
-    res.end('Thanks for the vote!')
+
+
+    res.render('votes');
 
     /*insertVote(name, options)
         .then(() => res.end('Poll created succesfully'))

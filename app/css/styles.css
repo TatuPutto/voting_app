@@ -1,18 +1,66 @@
 body {
     font-family: sans-serif;
+    margin: 0;
 }
 
-.container {
+ul {
+    -webkit-padding-start: 0;
+    -moz-padding-start: 0;
+    list-style-type: none;
+    -webkit-margin-before: 1em;
+}
+
+label {
+    margin-bottom: 0;
+    font-weight: normal;
+}
+
+input[type="radio"] {
+    margin-right: 5px;
+}
+
+.header {
+    height: 50px;
+    background-image: linear-gradient(to left, #5fd7ff 0%, #07afe6 90%);
+}
+
+.header a {
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.header-content {
     width: 50%;
     margin: 0 auto;
 }
 
+.nav {
+    float: left;
+    color: white;
+}
+
+.login {
+    float: right;
+}
+
+.header ul li {
+    display: inline;
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.container {
+    width: 50%;
+    margin: 40px auto;
+    border-radius: 6px;
+    padding: 20px;
+    background: whitesmoke;
+    box-shadow: 2px 2px 3px #c5c5c5;
+}
+
 .polls {
     background: whitesmoke;
-    list-style-type: none;
-    -webkit-padding-start: 0;
-    -moz-padding-start: 0;
-    padding: 20px;
     border-radius: 6px;
     font-size: 18px;
     text-align: center;
@@ -21,25 +69,39 @@ body {
 .poll {
     padding: 10px;
     background: white;
-    border: 1px solid #c7c7c7;
     border-radius: 6px;
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
-
 
 .poll-options {
-    list-style-type: none;
-    -webkit-padding-start: 0;
-    -moz-padding-start: 0;
     padding: 20px 0;
     font-size: 18px;
+    cursor: pointer;
 }
+
 
 .option {
     padding: 10px;
-    border: 1px solid blue;
+    background: white;
+    border-radius: 4px;
+    margin-bottom: 2px;
 }
 
+
+.option:hover {
+    background: #f0fbff;
+}
+
+
+input[type="button"], input[type="submit"] {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 40px;
+}
+
+.results {
+    float: right;
+}
 
 a {
     text-decoration: none;
