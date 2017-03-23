@@ -1,34 +1,33 @@
 doctype
 html
 head
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='http://localhost:8080/styles.css')
+    script(src='/scripts.js')
     title=name
 body
     include ./header.pug
 
     div.container
         div.answer
-            h2.text-primary.text-center=name
+            h2.text-center=name
             form(action='/poll/' + id + '/vote', method='post', enctype='multipart/form-data')
                 ul.poll-options
                     each option in options
                         li.option
                             - optionId = option.option_id
                             - optionValue = option.value
-
                             input(type='radio', name='vote', value=optionId)
                             label=optionValue
 
-
                 input(type='submit', value='Vote').btn.btn-success
-                input(type='button', value='results').btn.btn-info.results
+                input(type='button', value='Results' onclick='toggleResults()').btn.btn-info.results
 
+        div.answers
+            p=('Total votes: ' + totalVotes)
 
-        //div.answers
-            //p=('Total votes: ' + totalVotes)
-
-            //each option in options
-            //    - votes = option.votes
-                //- optionValue = option.value
-            //    p=(optionValue + ': ' + votes)
+            each option in options
+                - votes = option.votes
+                - optionValue = option.value
+                p=(optionValue + ': ' + votes)

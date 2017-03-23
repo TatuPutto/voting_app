@@ -11,6 +11,7 @@ const app = express();
 app.set('port', (process.env.PORT || 8080));
 
 app.use(express.static(__dirname + '/css'));
+app.use(express.static(__dirname));
 
 //app.use(express.static(path.join(__dirname  + '/views')));
 app.set('view engine', 'pug');
@@ -30,7 +31,6 @@ app.post('/createpoll', multer().array(), (req, res) => {
     let options = [];
 
     for(let i = 1; i < paramsAmount; i++) {
-        //options.push(postParams['option' + i]);
         let option = {};
         option['option_id'] = i.toString();
         option['value'] = postParams['option' + i];
@@ -39,7 +39,7 @@ app.post('/createpoll', multer().array(), (req, res) => {
     }
 
     insertPoll(name, options, 'TatuPutto')
-        .then(() => res.end('Poll created succesfully'))
+        .then(() => res.redirect('/polls'))
         .catch((err) => res.end('Could not create poll' + err));
 });
 
@@ -77,8 +77,7 @@ app.post('/poll/:id/vote', multer().array(), (req, res) => {
     const vote = req.body.vote;
     insertVote(pollId, vote);
 
-
-    res.render('votes');
+    res.redirect('/poll/' + pollId);
 
     /*insertVote(name, options)
         .then(() => res.end('Poll created succesfully'))

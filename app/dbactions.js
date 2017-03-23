@@ -19,7 +19,7 @@ function getPolls(author) {
         getConnection((err, db, collection) => {
             if(err) return reject(err);
 
-            collection.find({}).toArray((err, results) => {
+            collection.find({}).sort({_id: -1}).toArray((err, results) => {
                 if(err) reject(err);
                 if(results.length > 0) {
                     resolve(results);

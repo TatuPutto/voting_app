@@ -19,6 +19,18 @@ input[type="radio"] {
     margin-right: 5px;
 }
 
+input[type="button"], input[type="submit"] {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6px 40px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 0 8px;
+    margin-bottom: 5px;
+}
+
 .header {
     height: 50px;
     background-image: linear-gradient(to left, #5fd7ff 0%, #07afe6 90%);
@@ -63,15 +75,40 @@ input[type="radio"] {
     background: whitesmoke;
     border-radius: 6px;
     font-size: 18px;
-    text-align: center;
+    padding: 20px 0;
+}
+
+.polls a {
+    color: black;
 }
 
 .poll {
     padding: 10px;
     background: white;
-    border-radius: 6px;
+    border-radius: 4px;
     margin-bottom: 2px;
+    cursor: pointer;
 }
+
+
+#delete {
+    float: right;
+    padding: 4px 10px;
+    margin-bottom: 2px;
+    position: relative;
+    bottom: 4px;
+    font-weight: normal;
+    color: #d9534f;
+    border-color: #d9534f;
+    background: white;
+}
+
+#delete:hover {
+    color: #fff;
+    background-color: #d9534f;
+    border-color: #d43f3a;
+}
+
 
 .poll-options {
     padding: 20px 0;
@@ -93,15 +130,19 @@ input[type="radio"] {
 }
 
 
-input[type="button"], input[type="submit"] {
-    font-weight: bold;
-    font-size: 16px;
-    padding: 6px 40px;
-}
-
 .results {
     float: right;
 }
+
+
+.answers {
+    display: none;
+    border-top: 1px solid #ababab;
+    margin-top: 30px;
+    padding-top: 30px;
+    font-size: 18px;
+}
+
 
 a {
     text-decoration: none;
@@ -109,4 +150,20 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+
+.poll-question {
+    margin-top: 20px;
+    width: 100%;
+    height: 40px;
+    font-size: 20px;
+}
+
+.add-option {
+    float: left;
+}
+
+.create-poll {
+    float: right;
 }

@@ -1,14 +1,16 @@
 doctype
 html
 head
-    link(rel='stylesheet', href='http://localhost:8080/styles.css')
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://localhost:8080/styles.css')
     title='Your polls'
 body
     include ./header.pug
     div.container
-        h2.text-primary.text-center='Your active polls'
+        h2.text-center='Your active polls'
         ul.polls
             each poll in polls
-                li.poll
-                    a(href='localhost:8080/poll/' + poll._id) #{poll.name}
+                - pollId = poll._id
+                - pollName = poll.name
+                li(onclick="location.href='/poll/" + pollId + "'").poll #{pollName}
+                    input(type='button', value='Delete').btn.btn-danger#delete
