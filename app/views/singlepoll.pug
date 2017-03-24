@@ -15,13 +15,13 @@ body
             form(action='/poll/' + id + '/vote', method='post', enctype='multipart/form-data')
                 ul.poll-options
                     each option in options
-                        li.option
-                            - optionId = option.option_id
-                            - optionValue = option.value
-                            input(type='radio', name='vote', value=optionId)
+                        - optionId = option.option_id
+                        - optionValue = option.value
+                        li(onclick='selectOption(' + optionId + ')').option
+                            input(type='radio', id=optionId name='vote', value=optionId)
                             label=optionValue
 
-                input(type='submit', value='Vote').btn.btn-success
+                input(type='submit', value='Vote' disabled='true').btn.btn-success.vote
                 input(type='button', value='Results' onclick='toggleResults()').btn.btn-info.results
 
         div.answers

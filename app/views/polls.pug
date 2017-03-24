@@ -3,6 +3,7 @@ html
 head
     link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
     link(rel='stylesheet', href='http://localhost:8080/styles.css')
+    script(src='/scripts.js')
     title='Your polls'
 body
     include ./header.pug
@@ -11,6 +12,7 @@ body
         ul.polls
             each poll in polls
                 - pollId = poll._id
+                - pollHref = '/poll/' + pollId
                 - pollName = poll.name
-                li(onclick="location.href='/poll/" + pollId + "'").poll #{pollName}
-                    input(type='button', value='Delete').btn.btn-danger#delete
+                li(onclick='location.href="' + pollHref + '"').poll #{pollName}
+                    input(type='button', value='Delete' onclick='removePoll(event, "' + pollId + '")').btn.btn-danger#delete

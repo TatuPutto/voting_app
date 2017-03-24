@@ -115,11 +115,10 @@ function insertVote(pollId, optionId) {
 }
 
 function removePoll(id) {
-    mongo.connect('mongodb://localhost:27017/polls', (err, db) => {
+    getConnection((err, db, collection) => {
         if(err) throw err;
-        var collection = db.collection('polls');
 
-        collection.remove({_id: "58d2e1d4ce3e003da0d8e4a7"}, (err, data) => {
+        collection.remove({_id: new ObjectId(id)}, (err, data) => {
             if(err) throw err;
             db.close();
         });

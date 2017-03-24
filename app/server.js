@@ -84,8 +84,8 @@ app.post('/poll/:id/vote', multer().array(), (req, res) => {
         .catch((err) => res.end('Could not create poll' + err));*/
 });
 
-app.get('/removepoll', (req, res) => {
-    removePoll();
+app.delete('/removepoll/:pollId', (req, res) => {
+    removePoll(req.params.pollId);
 });
 
 app.listen(app.get('port'), () => console.log('Listening port ' + app.get('port')));
